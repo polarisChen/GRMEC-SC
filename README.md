@@ -1,5 +1,5 @@
 # GRMEC-SC
-The source code and input data of GRMEC-SC
+The source code and input data of GRMEC-SC.
 
 ## Usage
 #### Clone or download this repo.
@@ -8,7 +8,7 @@ git clone https://github.com/polarisChen/GRMEC-SC.git
 ```
 
 #### Code structure
-- ``constructSv.R```: constructing the affinity matrix S
+- ```constructSv.R```: constructing the affinity matrix S
 - ```clustering_update.R```: defines the iterative steps of the model update and clustering evaluation
 - ```main.py```: run the model
 
