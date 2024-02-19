@@ -16,9 +16,9 @@ git clone https://github.com/polarisChen/GRMEC-SC.git
 #### Example command
 Take the datasets "cellMix" as an example.
 
-Running environment：R version 4.2.1
+Running environment: R version 4.2.1
 
-Rscript main_demo.R
+Run the model: Rscript main_demo.R
 
 
 ## Data availability
