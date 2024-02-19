@@ -1,5 +1,5 @@
-source("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\constructSv.R")
-source("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\clustering_update.R")
+source("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\constructSv.R")
+source("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\clustering_update.R")
 
 library(Matrix)
 library(parallel)
@@ -33,14 +33,14 @@ for(i in 1:length(lambda1s)){
     
     try({
       split_data = list()
-      rna = read.csv("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\data\\RNA.CSV",row.name=1)
+      rna = read.csv("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\data\\RNA.CSV",row.name=1)
       rna = LogNormalize(rna)
-      adt = read.csv("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\data\\ATAC.CSV",row.name=1)
+      adt = read.csv("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\data\\ATAC.CSV",row.name=1)
       adt = LogNormalize(adt)
       
       split_data[[1]] = t(rna)
       split_data[[2]] = t(adt)
-      gt = read.csv("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\data\\truth.csv", row.names=1, stringsAsFactors=F)
+      gt = read.csv("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\data\\truth.csv", row.names=1, stringsAsFactors=F)
       gt = as.vector(gt$trueType)  
   
       views = 2
@@ -51,7 +51,7 @@ for(i in 1:length(lambda1s)){
       
       
       #* construct W & neighbors 
-      clusts = read.csv("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\data\\cllMix_sv.csv")
+      clusts = read.csv("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\data\\cllMix_sv.csv")
       clusts = clusts[, 2:dim(clusts)[2]]
       res = apply(clusts, MARGIN = 2, function(i){
         N = length(unique(i))
@@ -59,7 +59,7 @@ for(i in 1:length(lambda1s)){
       })
       res
     
-      S  = constructSv("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\data\\cllMix_sv.csv")
+      S  = constructSv("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\data\\cllMix_sv.csv")
       
       ## dimension reduction(npc) calculation
       npc = 50
@@ -83,8 +83,8 @@ for(i in 1:length(lambda1s)){
       all_result[((i-1)*9+j),8]<-max(res[["ari"]][,2])
       
       # save res
-      saveRDS(res, paste0("E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\result\\", 'cellMix', '_Lam1_', lambda1, '_Lam2_', lambda2, '.rds'))
+      saveRDS(res, paste0("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\result\\", 'cellMix', '_Lam1_', lambda1, '_Lam2_', lambda2, '.rds'))
     })
   }}  
-saveRDS(all_result,'E:\\R_code\\01 GRMEC-SC\\Code_for_github\\GRMEC-SC\\result\\cellMix_res.rds')
+saveRDS(all_result,'E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\result\\cellMix_res.rds')
 
