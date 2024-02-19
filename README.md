@@ -18,6 +18,8 @@ Take the datasets "cellMix" as an example.
 
 Running environment：R version 4.2.1
 
+Rscript main_demo.R
+
 
 ## Data availability
 |  Dataset              | Protocol   | Source |
