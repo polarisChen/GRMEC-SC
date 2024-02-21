@@ -83,7 +83,7 @@ for(i in 1:length(lambda1s)){
       all_result[((i-1)*9+j),8]<-max(res[["ari"]][,2])
       
       # save res
-      saveRDS(res, paste0("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\result\\", 'cellMix', '_Lam1_', lambda1, '_Lam2_', lambda2, '.rds'))
+      # saveRDS(res, paste0("E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\result\\", 'cellMix', '_Lam1_', lambda1, '_Lam2_', lambda2, '.rds'))
     })
   }}  
 saveRDS(all_result,'E:\\R_code\\01 GRMEC-SC\\GRMEC-SC\\result\\cellMix_res.rds')
