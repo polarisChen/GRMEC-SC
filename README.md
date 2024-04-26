@@ -14,7 +14,7 @@ git clone https://github.com/polarisChen/GRMEC-SC.git
 
 
 #### Example command
-Take the datasets "cellMix" as an example.
+Take the datasets "Inhosue" as an example.
 
 Running environment: R version 4.2.1
 
