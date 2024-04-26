@@ -79,16 +79,18 @@ clustering_update <- function(X, gt, K, npc, S, lambda1, lambda2, iteration=500,
     cat("### updating W...\n")
     SH = H %*% t(H)
     LH = diag(colSums(SH)) - SH
+    DH = diag(colSums(SH))
     mvpr = 0
     mvnw = 0
     for(v in 1:Mx){
       mvpr = mvpr + wv[iter, v] * V[[v]] %*% t(V[[v]])
       mvnw = mvnw + wv[iter, v] * X[[v]] %*% t(V[[v]])
     }
-    sec_ord_g = lambda1 * LH %*% W + W %*% mvpr
-    W = W * (mvnw / sec_ord_g)
+    fir_ord_g = mvnw + lambda1 * SH %*% W
+    sec_ord_g = lambda1 * DH %*% W + W %*% mvpr
+    W = W * (fir_ord_g / sec_ord_g)
     rm(mvpr, mvnw, SH)
-    
+
     
     # 5\ *normalize
     norms = rowSums(W)
